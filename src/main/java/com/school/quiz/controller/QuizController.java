@@ -30,6 +30,17 @@ public class QuizController {
     @GetMapping(AppConstants.DASHBOARD_ROUTE)
     public String dashboard(Model model, HttpSession session) {
         session.setAttribute("isQuizActive", false);
+
+        // Récupération des stats de session (scores par matière)
+        @SuppressWarnings("unchecked")
+        Map<String, Integer> subjectScores =
+                (Map<String, Integer>) session.getAttribute("subjectScores");
+        if (subjectScores == null) subjectScores = new HashMap<>();
+
+        model.addAttribute("subjectScores",  subjectScores);
+        model.addAttribute("totalGames",     session.getAttribute("totalGames")     != null ? session.getAttribute("totalGames")     : 0);
+        model.addAttribute("bestScore",      session.getAttribute("bestScore")      != null ? session.getAttribute("bestScore")      : 0);
+        model.addAttribute("totalQuestions", session.getAttribute("totalQuestions") != null ? session.getAttribute("totalQuestions") : 10);
         return "dashboard";
     }
 
@@ -216,10 +227,31 @@ public class QuizController {
         List<?> questions = getQuestionsFromSession(session);
         Integer score     = (Integer) session.getAttribute("score");
 
-        // Protection contre une session expirée ou accès direct
         if (questions == null || score == null) {
             return "redirect:" + AppConstants.DASHBOARD_ROUTE;
         }
+
+        // Mise à jour des stats de session
+        Subject subject = (Subject) session.getAttribute("subject");
+
+        @SuppressWarnings("unchecked")
+        Map<String, Integer> subjectScores =
+                (Map<String, Integer>) session.getAttribute("subjectScores");
+        if (subjectScores == null) subjectScores = new HashMap<>();
+        if (subject != null) {
+            Integer prev = subjectScores.get(subject.name());
+            if (prev == null || score > prev) subjectScores.put(subject.name(), score);
+        }
+        session.setAttribute("subjectScores", subjectScores);
+
+        // Meilleur score global
+        Integer bestScore = (Integer) session.getAttribute("bestScore");
+        if (bestScore == null || score > bestScore) session.setAttribute("bestScore", score);
+
+        // Nombre de parties jouées
+        Integer totalGames = (Integer) session.getAttribute("totalGames");
+        session.setAttribute("totalGames", totalGames == null ? 1 : totalGames + 1);
+        session.setAttribute("totalQuestions", questions.size());
 
         model.addAttribute("score", score);
         model.addAttribute("total", questions.size());
