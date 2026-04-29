@@ -5,7 +5,9 @@
 
     <!-- ══════════════════════════════════════════════
          HERO BANNER — taille carte login, centré
+         HERO BANNER — taille carte login, centré
     ══════════════════════════════════════════════ -->
+    <div class="hero-banner mb-5 mx-auto" style="max-width:440px;">
     <div class="hero-banner mb-5 mx-auto" style="max-width:440px;">
         <div class="hero-left">
             <div class="hero-emoji">🎮</div>
@@ -52,10 +54,46 @@
     <!-- ══════════════════════════════════════════════
          CARTES QUIZ
     ══════════════════════════════════════════════ -->
+    <!-- ══════════════════════════════════════════════
+         CARTES QUIZ
+    ══════════════════════════════════════════════ -->
     <div class="row g-4">
 
         <!-- ── MATHS ── -->
+        <!-- ── MATHS ── -->
         <div class="col-12 col-md-6 col-lg-4">
+            <div class="quiz-card quiz-card-blue">
+                <div class="qc-top">
+                    <div class="qc-icon-wrap qc-icon-blue">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2436/2436633.png"
+                             width="52" alt="Maths">
+                    </div>
+                    <!-- Badge niveau -->
+                    <span class="qc-level"
+                          th:with="s=${subjectScores['MATHS']}"
+                          th:classappend="${s == null ? ' lvl-new' :
+                                          (s >= 8 ? ' lvl-expert' :
+                                          (s >= 5 ? ' lvl-inter' : ' lvl-debutant'))}"
+                          th:text="${s == null ? '✨ Nouveau' :
+                                   (s >= 8 ? '🏆 Expert' :
+                                   (s >= 5 ? '⚡ Intermédiaire' : '📘 Débutant'))}">
+                    </span>
+                </div>
+                <h3 class="qc-title">Mathématiques</h3>
+                <p class="qc-desc">Calcul · Logique · Géométrie · Algèbre</p>
+
+                <!-- Barre de progression si déjà joué -->
+                <div class="qc-progress-wrap" th:if="${subjectScores['MATHS'] != null}">
+                    <div class="qc-progress-bar">
+                        <div class="qc-progress-fill qc-fill-blue"
+                             th:style="'width: ' + (${subjectScores['MATHS']} * 100 / ${totalQuestions}) + '%'"></div>
+                    </div>
+                    <span class="qc-score-txt"
+                          th:text="'Meilleur : ' + ${subjectScores['MATHS']} + '/' + ${totalQuestions}"></span>
+                </div>
+
+                <a th:href="@{/quiz(subject='MATHS')}" class="qc-btn qc-btn-blue">
+                    <span th:text="${subjectScores['MATHS'] != null ? 'Rejouer →' : 'Commencer →'}">Commencer →</span>
             <div class="quiz-card quiz-card-blue">
                 <div class="qc-top">
                     <div class="qc-icon-wrap qc-icon-blue">
@@ -93,7 +131,38 @@
         </div>
 
         <!-- ── ANGLAIS ── -->
+        <!-- ── ANGLAIS ── -->
         <div class="col-12 col-md-6 col-lg-4">
+            <div class="quiz-card quiz-card-green">
+                <div class="qc-top">
+                    <div class="qc-icon-wrap qc-icon-green">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3898/3898082.png"
+                             width="52" alt="Anglais">
+                    </div>
+                    <span class="qc-level"
+                          th:with="s=${subjectScores['ANGLAIS']}"
+                          th:classappend="${s == null ? ' lvl-new' :
+                                          (s >= 8 ? ' lvl-expert' :
+                                          (s >= 5 ? ' lvl-inter' : ' lvl-debutant'))}"
+                          th:text="${s == null ? '✨ Nouveau' :
+                                   (s >= 8 ? '🏆 Expert' :
+                                   (s >= 5 ? '⚡ Intermédiaire' : '📘 Débutant'))}">
+                    </span>
+                </div>
+                <h3 class="qc-title">Anglais</h3>
+                <p class="qc-desc">Vocabulaire · Grammaire · Expressions</p>
+
+                <div class="qc-progress-wrap" th:if="${subjectScores['ANGLAIS'] != null}">
+                    <div class="qc-progress-bar">
+                        <div class="qc-progress-fill qc-fill-green"
+                             th:style="'width: ' + (${subjectScores['ANGLAIS']} * 100 / ${totalQuestions}) + '%'"></div>
+                    </div>
+                    <span class="qc-score-txt"
+                          th:text="'Meilleur : ' + ${subjectScores['ANGLAIS']} + '/' + ${totalQuestions}"></span>
+                </div>
+
+                <a th:href="@{/quiz(subject='ANGLAIS')}" class="qc-btn qc-btn-green">
+                    <span th:text="${subjectScores['ANGLAIS'] != null ? 'Rejouer →' : 'Commencer →'}">Commencer →</span>
             <div class="quiz-card quiz-card-green">
                 <div class="qc-top">
                     <div class="qc-icon-wrap qc-icon-green">
@@ -129,7 +198,38 @@
         </div>
 
         <!-- ── CHIMIE ── -->
+        <!-- ── CHIMIE ── -->
         <div class="col-12 col-md-6 col-lg-4">
+            <div class="quiz-card quiz-card-orange">
+                <div class="qc-top">
+                    <div class="qc-icon-wrap qc-icon-orange">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3022/3022214.png"
+                             width="52" alt="Chimie">
+                    </div>
+                    <span class="qc-level"
+                          th:with="s=${subjectScores['CHIMIE']}"
+                          th:classappend="${s == null ? ' lvl-new' :
+                                          (s >= 8 ? ' lvl-expert' :
+                                          (s >= 5 ? ' lvl-inter' : ' lvl-debutant'))}"
+                          th:text="${s == null ? '✨ Nouveau' :
+                                   (s >= 8 ? '🏆 Expert' :
+                                   (s >= 5 ? '⚡ Intermédiaire' : '📘 Débutant'))}">
+                    </span>
+                </div>
+                <h3 class="qc-title">Chimie</h3>
+                <p class="qc-desc">Éléments · Réactions · Formules</p>
+
+                <div class="qc-progress-wrap" th:if="${subjectScores['CHIMIE'] != null}">
+                    <div class="qc-progress-bar">
+                        <div class="qc-progress-fill qc-fill-orange"
+                             th:style="'width: ' + (${subjectScores['CHIMIE']} * 100 / ${totalQuestions}) + '%'"></div>
+                    </div>
+                    <span class="qc-score-txt"
+                          th:text="'Meilleur : ' + ${subjectScores['CHIMIE']} + '/' + ${totalQuestions}"></span>
+                </div>
+
+                <a th:href="@{/quiz(subject='CHIMIE')}" class="qc-btn qc-btn-orange">
+                    <span th:text="${subjectScores['CHIMIE'] != null ? 'Rejouer →' : 'Commencer →'}">Commencer →</span>
             <div class="quiz-card quiz-card-orange">
                 <div class="qc-top">
                     <div class="qc-icon-wrap qc-icon-orange">
@@ -166,6 +266,9 @@
 
     </div>
 
+    <!-- ══════════════════════════════════════════════
+         STYLES
+    ══════════════════════════════════════════════ -->
     <!-- ══════════════════════════════════════════════
          STYLES
     ══════════════════════════════════════════════ -->
@@ -356,8 +459,195 @@
         @media (max-width: 480px) {
             .hero-title  { font-size: 1.15rem; }
             .quiz-card   { padding: 22px 18px 20px; }
+        /* --- HERO --- */
+        .hero-banner {
+            background: linear-gradient(135deg, #dcedc8 0%, #c5e1a5 60%, #aed581 100%);
+            border-radius: 22px;
+            padding: 28px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            box-shadow: 0 8px 28px rgba(100,150,60,0.18);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: -50px; right: -50px;
+            width: 180px; height: 180px;
+            background: rgba(255,255,255,0.25);
+            border-radius: 50%;
+        }
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            bottom: -35px; left: 30%;
+            width: 130px; height: 130px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+        }
+        .hero-left {
+            display: flex; align-items: center; gap: 18px; z-index: 1;
+        }
+        .hero-emoji {
+            font-size: 3.2rem; line-height: 1;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+        }
+        .hero-title {
+            color: #2e5c14; font-size: clamp(1.2rem, 3vw, 1.7rem);
+            font-weight: 800; margin: 0; letter-spacing: -0.3px;
+        }
+        .hero-wave {
+            display: inline-block;
+            animation: waveAnim 2s ease-in-out infinite;
+            transform-origin: 70% 80%;
+        }
+        @keyframes waveAnim {
+            0%,100% { transform: rotate(0deg);   }
+            20%      { transform: rotate(20deg);  }
+            60%      { transform: rotate(-10deg); }
+        }
+        .hero-sub { color: rgba(46,92,20,0.75); font-size: 0.9rem; margin: 4px 0 0; }
+
+        /* Stats globales */
+        .hero-stats {
+            display: flex; align-items: center; gap: 0;
+            background: rgba(255,255,255,0.45);
+            border: 1px solid rgba(255,255,255,0.6);
+            border-radius: 16px; padding: 16px 24px;
+            z-index: 1; backdrop-filter: blur(4px);
+            flex-wrap: wrap; gap: 12px;
+        }
+        .hero-stat { text-align: center; padding: 0 16px; }
+        .hero-stat-val {
+            display: block; color: #2e5c14;
+            font-size: 1.5rem; font-weight: 800;
+            line-height: 1.1;
+        }
+        .hero-stat-lbl { color: rgba(46,92,20,0.65); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.5px; }
+        .hero-stat-sep { width: 1px; height: 40px; background: rgba(46,92,20,0.2); }
+        .hero-first {
+            background: rgba(255,255,255,0.45);
+            border: 1px dashed rgba(46,92,20,0.35);
+            border-radius: 12px; padding: 10px 20px;
+            color: rgba(46,92,20,0.85); font-size: 0.95rem; font-weight: 600;
+            z-index: 1;
+        }
+
+        /* --- SECTION LABEL --- */
+        .section-pill {
+            background: #f1f8e9;
+            border: 1px solid #c8e6c9;
+            color: #4e342e;
+            border-radius: 50px;
+            padding: 5px 16px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        .section-line { flex: 1; height: 1px; background: linear-gradient(to right, #c8e6c9, transparent); }
+
+        /* --- QUIZ CARDS --- */
+        .quiz-card {
+            background: white;
+            border-radius: 20px;
+            padding: 28px 24px 24px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0,0,0,0.06);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+            transition: transform 0.28s ease, box-shadow 0.28s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .quiz-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 5px;
+        }
+        .quiz-card-blue::before   { background: linear-gradient(90deg, #1565c0, #42a5f5); }
+        .quiz-card-green::before  { background: linear-gradient(90deg, #2e7d32, #66bb6a); }
+        .quiz-card-orange::before { background: linear-gradient(90deg, #e65100, #ffa726); }
+
+        .quiz-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+        }
+
+        /* Top row: icon + badge */
+        .qc-top {
+            display: flex; justify-content: space-between; align-items: flex-start;
+            margin-bottom: 18px;
+        }
+        .qc-icon-wrap {
+            width: 72px; height: 72px; border-radius: 16px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .qc-icon-blue   { background: linear-gradient(135deg, #e3f2fd, #bbdefb); }
+        .qc-icon-green  { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); }
+        .qc-icon-orange { background: linear-gradient(135deg, #fff3e0, #ffe0b2); }
+
+        /* Badge niveau */
+        .qc-level {
+            font-size: 0.73rem; font-weight: 700;
+            border-radius: 50px; padding: 5px 12px;
+            white-space: nowrap; letter-spacing: 0.3px;
+        }
+        .lvl-new      { background: #f3e5f5; color: #7b1fa2; border: 1px solid #ce93d8; }
+        .lvl-debutant { background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; }
+        .lvl-inter    { background: #fff8e1; color: #f57f17; border: 1px solid #ffe082; }
+        .lvl-expert   { background: #fff3e0; color: #e65100; border: 1px solid #ffcc80; }
+
+        /* Titre et description */
+        .qc-title { font-size: 1.25rem; font-weight: 800; color: #2e3250; margin: 0 0 6px; }
+        .qc-desc  { color: #9098b5; font-size: 0.88rem; margin: 0; flex: 1; }
+
+        /* Barre de progression */
+        .qc-progress-wrap { margin: 16px 0 0; }
+        .qc-progress-bar {
+            height: 8px; background: #f0f2f8; border-radius: 50px;
+            overflow: hidden; margin-bottom: 5px;
+        }
+        .qc-progress-fill { height: 100%; border-radius: 50px; transition: width 0.6s ease; }
+        .qc-fill-blue   { background: linear-gradient(90deg, #1565c0, #42a5f5); }
+        .qc-fill-green  { background: linear-gradient(90deg, #2e7d32, #66bb6a); }
+        .qc-fill-orange { background: linear-gradient(90deg, #e65100, #ffa726); }
+        .qc-score-txt   { font-size: 0.77rem; color: #9098b5; font-weight: 600; }
+
+        /* Boutons */
+        .qc-btn {
+            display: block; text-align: center;
+            margin-top: 20px; padding: 13px 20px;
+            border-radius: 12px; font-weight: 700; font-size: 0.97rem;
+            text-decoration: none; transition: all 0.22s ease;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.10);
+        }
+        .qc-btn-blue   { background: linear-gradient(135deg, #1565c0, #42a5f5); color: white; }
+        .qc-btn-green  { background: linear-gradient(135deg, #2e7d32, #66bb6a); color: white; }
+        .qc-btn-orange { background: linear-gradient(135deg, #e65100, #ffa726); color: white; }
+        .qc-btn:hover  { opacity: 0.88; transform: translateY(-2px); box-shadow: 0 8px 22px rgba(0,0,0,0.18); }
+
+        /* Responsive */
+        @media (max-width: 767px) {
+            .hero-banner { padding: 22px 20px; flex-direction: column; align-items: flex-start; }
+            .hero-stats  { width: 100%; justify-content: space-around; }
+            .hero-stat   { padding: 0 8px; }
+            .hero-stat-sep { display: none; }
+            .hero-left   { flex-direction: column; align-items: flex-start; gap: 10px; }
+        }
+        @media (max-width: 480px) {
+            .hero-title  { font-size: 1.15rem; }
+            .quiz-card   { padding: 22px 18px 20px; }
         }
     </style>
+
 
 </div>
 </body>
