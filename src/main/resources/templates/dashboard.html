@@ -4,13 +4,13 @@
 <div class="content-fragment">
 
     <!-- ══════════════════════════════════════════════
-         HERO BANNER
+         HERO BANNER — taille carte login, centré
     ══════════════════════════════════════════════ -->
-    <div class="hero-banner mb-5">
+    <div class="hero-banner mb-5 mx-auto" style="max-width:440px;">
         <div class="hero-left">
-            
+            <div class="hero-emoji">🎮</div>
             <div>
-                <h1 class="hero-title">Viens t'amuser avec moi <span class="hero-wave">😊</span></h1>
+                <h1 class="hero-title">Viens t'amuser avec moi <span class="hero-wave">😊</span> !</h1>
                 <p class="hero-sub">Teste tes connaissances · Progresse · Deviens expert</p>
             </div>
         </div>
@@ -37,7 +37,7 @@
         </div>
         <!-- Message d'accueil si 1ère visite -->
         <div class="hero-first" th:if="${totalGames == 0}">
-            <span> Première partie ? Lance-toi !</span>
+            <span>🚀 Première partie ? Lance-toi !</span>
         </div>
     </div>
 
@@ -172,32 +172,32 @@
     <style>
         /* --- HERO --- */
         .hero-banner {
-            background: linear-gradient(135deg, #4e342e 0%, #6d4c41 60%, #8d6e63 100%);
+            background: linear-gradient(135deg, #dcedc8 0%, #c5e1a5 60%, #aed581 100%);
             border-radius: 22px;
-            padding: 32px 36px;
+            padding: 28px 30px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 24px;
-            box-shadow: 0 12px 40px rgba(78,52,46,0.25);
+            gap: 20px;
+            box-shadow: 0 8px 28px rgba(100,150,60,0.18);
             position: relative;
             overflow: hidden;
         }
         .hero-banner::before {
             content: '';
             position: absolute;
-            top: -60px; right: -60px;
-            width: 220px; height: 220px;
-            background: rgba(255,255,255,0.05);
+            top: -50px; right: -50px;
+            width: 180px; height: 180px;
+            background: rgba(255,255,255,0.25);
             border-radius: 50%;
         }
         .hero-banner::after {
             content: '';
             position: absolute;
-            bottom: -40px; left: 30%;
-            width: 160px; height: 160px;
-            background: rgba(255,255,255,0.04);
+            bottom: -35px; left: 30%;
+            width: 130px; height: 130px;
+            background: rgba(255,255,255,0.15);
             border-radius: 50%;
         }
         .hero-left {
@@ -208,7 +208,7 @@
             filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
         }
         .hero-title {
-            color: white; font-size: clamp(1.2rem, 3vw, 1.7rem);
+            color: #2e5c14; font-size: clamp(1.2rem, 3vw, 1.7rem);
             font-weight: 800; margin: 0; letter-spacing: -0.3px;
         }
         .hero-wave {
@@ -221,30 +221,30 @@
             20%      { transform: rotate(20deg);  }
             60%      { transform: rotate(-10deg); }
         }
-        .hero-sub { color: rgba(255,255,255,0.65); font-size: 0.9rem; margin: 4px 0 0; }
+        .hero-sub { color: rgba(46,92,20,0.75); font-size: 0.9rem; margin: 4px 0 0; }
 
         /* Stats globales */
         .hero-stats {
             display: flex; align-items: center; gap: 0;
-            background: rgba(255,255,255,0.10);
-            border: 1px solid rgba(255,255,255,0.18);
+            background: rgba(255,255,255,0.45);
+            border: 1px solid rgba(255,255,255,0.6);
             border-radius: 16px; padding: 16px 24px;
             z-index: 1; backdrop-filter: blur(4px);
             flex-wrap: wrap; gap: 12px;
         }
         .hero-stat { text-align: center; padding: 0 16px; }
         .hero-stat-val {
-            display: block; color: white;
+            display: block; color: #2e5c14;
             font-size: 1.5rem; font-weight: 800;
             line-height: 1.1;
         }
-        .hero-stat-lbl { color: rgba(255,255,255,0.55); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.5px; }
-        .hero-stat-sep { width: 1px; height: 40px; background: rgba(255,255,255,0.2); }
+        .hero-stat-lbl { color: rgba(46,92,20,0.65); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.5px; }
+        .hero-stat-sep { width: 1px; height: 40px; background: rgba(46,92,20,0.2); }
         .hero-first {
-            background: rgba(255,255,255,0.12);
-            border: 1px dashed rgba(255,255,255,0.35);
+            background: rgba(255,255,255,0.45);
+            border: 1px dashed rgba(46,92,20,0.35);
             border-radius: 12px; padding: 10px 20px;
-            color: rgba(255,255,255,0.85); font-size: 0.95rem; font-weight: 600;
+            color: rgba(46,92,20,0.85); font-size: 0.95rem; font-weight: 600;
             z-index: 1;
         }
 
