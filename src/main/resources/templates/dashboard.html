@@ -8,7 +8,6 @@
     ══════════════════════════════════════════════ -->
     <div class="hero-banner mb-5 mx-auto" style="max-width:440px;">
         <div class="hero-left">
-            <div class="hero-emoji">🎮</div>
             <div>
                 <h1 class="hero-title">Viens t'amuser avec moi <span class="hero-wave">😊</span> !</h1>
                 <p class="hero-sub">Teste tes connaissances · Progresse · Deviens expert</p>
@@ -68,7 +67,7 @@
                           th:classappend="${s == null ? ' lvl-new' :
                                           (s >= 8 ? ' lvl-expert' :
                                           (s >= 5 ? ' lvl-inter' : ' lvl-debutant'))}"
-                          th:text="${s == null ? '✨ Nouveau' :
+                          th:text="${s == null ? 
                                    (s >= 8 ? '🏆 Expert' :
                                    (s >= 5 ? '⚡ Intermédiaire' : '📘 Débutant'))}">
                     </span>
@@ -105,7 +104,7 @@
                           th:classappend="${s == null ? ' lvl-new' :
                                           (s >= 8 ? ' lvl-expert' :
                                           (s >= 5 ? ' lvl-inter' : ' lvl-debutant'))}"
-                          th:text="${s == null ? '✨ Nouveau' :
+                          th:text="${s == null ? 
                                    (s >= 8 ? '🏆 Expert' :
                                    (s >= 5 ? '⚡ Intermédiaire' : '📘 Débutant'))}">
                     </span>
@@ -141,7 +140,7 @@
                           th:classappend="${s == null ? ' lvl-new' :
                                           (s >= 8 ? ' lvl-expert' :
                                           (s >= 5 ? ' lvl-inter' : ' lvl-debutant'))}"
-                          th:text="${s == null ? '✨ Nouveau' :
+                          th:text="${s == null ? 
                                    (s >= 8 ? '🏆 Expert' :
                                    (s >= 5 ? '⚡ Intermédiaire' : '📘 Débutant'))}">
                     </span>
